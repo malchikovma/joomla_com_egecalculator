@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="0.1" method="upgrade">
+	<name>COM_EGECALCULATOR</name>
+	<author>Malchikov Mikhail</author>
+	<creationDate>Mart 2020</creationDate>
+	<copyright>VSU</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>malchikovma@vogu35.ru</authorEmail>
+	<authorUrl>vk.com/michaileight</authorUrl>
+	<version>0.0.1</version>
+	<description>COM_EGECALCULATOR_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update> <!-- Runs on update; New since J2.5 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>egecalculator.php</filename>
+		<folder>controllers</folder>
+		<folder>views</folder>
+		<folder>models</folder>
+	</files>
+	<administration>
+		<files folder="admin">
+			<filename>controller.php</filename>
+			<filename>egecalculator.php</filename>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+		</files>
+		<menu>COM_EGECALCULATOR_TITLE</menu>
+		<submenu>
+			<menu
+					link="option=com_egecalculator"
+					view="directions"
+			>
+				COM_EGECALCULATOR_DIRECTIONS
+			</menu>
+			<menu
+					link="option=com_egecalculator&amp;view=subjects"
+					view="subjects"
+			>
+				COM_EGECALCULATOR_SUBJECTS
+			</menu>
+		</submenu>
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB/en-GB.com_egecalculator.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_egecalculator.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+
