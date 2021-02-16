@@ -12,8 +12,10 @@ class EgecalculatorViewDirection extends JViewLegacy
         $this->item = $this->get('Item');
 
 
-        $subjects = $this->item->subjects_ids;
-        $this->form->setFieldAttribute('subjects_ids', 'default', $subjects);
+        $subjects = $this->item->required_subjects_ids;
+        $this->form->setFieldAttribute('required_subjects_ids', 'default', $subjects);
+        $subjects = $this->item->optional_subjects_ids;
+        $this->form->setFieldAttribute('optional_subjects_ids', 'default', $subjects);
 
         if (count($errors = $this->get('Errors')))
         {

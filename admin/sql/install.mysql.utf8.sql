@@ -1,11 +1,4 @@
--- Adminer 4.7.0 MySQL dump
-
-SET NAMES utf8;
-SET time_zone = '+00:00';
-SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
-
-SET NAMES utf8mb4;
+-- 0.0.1
 
 DROP TABLE IF EXISTS `#__egecalculator_directions`;
 CREATE TABLE `#__egecalculator_directions` (
@@ -40,4 +33,9 @@ INSERT INTO `#__egecalculator_subjects` (`title`) VALUES
 ("Комплексный экзамен по ОФП (общей физической подготовке)"),
 ("Творческое вступительное испытание");
 
--- 2020-03-12 08:08:12
+-- 0.0.2
+
+ALTER TABLE `#__egecalculator_directions` CHANGE
+    `subjects_ids` `required_subjects_ids` VARCHAR(100) NULL;
+ALTER TABLE `#__egecalculator_directions`
+    ADD `optional_subjects_ids` VARCHAR(100) NULL;

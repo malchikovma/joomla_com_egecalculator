@@ -51,12 +51,20 @@
                 default=""
         />
         <field
-            name="subjects_ids"
+            name="required_subjects_ids"
             type="subjects"
-            label="COM_EGECALCULATOR_SUBJECT_TITLE"
-            description="COM_EGECALCULATOR_SUBJECT_TITLE"
+            label="COM_EGECALCULATOR_REQUIRED_SUBJECT_TITLE"
+            description="COM_EGECALCULATOR_REQUIRED_SUBJECT_TITLE"
             default=""
             multiple="true"
+        />
+        <field
+                name="optional_subjects_ids"
+                type="subjects"
+                label="COM_EGECALCULATOR_OPTIONAL_SUBJECT_TITLE"
+                description="COM_EGECALCULATOR_OPTIONAL_SUBJECT_TITLE"
+                default=""
+                multiple="true"
         />
     </fieldset>
 </form>
