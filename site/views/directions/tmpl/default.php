@@ -78,7 +78,7 @@ $document->addStyleDeclaration($css)
                 foreach ($this->subjects as $subject) {
                     $html = "<label class=\"egecalculator-label\" for=\"subject-{$subject->id}\">";
                     $html .= "<input type=\"checkbox\" id=\"subject-{$subject->id}\" value=\"{$subject->id}\"/>&nbsp;";
-                    $html .= "{$subject->title}</label>";
+                    $html .= "{$subject->title}</label><br>";
                     echo $html;
                 }
             ?>

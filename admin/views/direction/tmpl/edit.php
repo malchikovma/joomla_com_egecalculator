@@ -1,8 +1,4 @@
-<?php
-
-defined('_JEXEC') or die();
-$this->item->subjects_ids = explode(',', $this->item->subjects_ids);
-?>
+<?php defined('_JEXEC') or die(); ?>
 <form action="index.php?option=com_egecalculator&layout=edit&id=<?php echo (int) $this->item->id ?>" method="post" name="adminForm" id="adminForm">
     <div class="form-horizontal">
         <fieldset class="adminform">
