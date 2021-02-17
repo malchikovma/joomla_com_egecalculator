@@ -27,7 +27,7 @@ jQuery(function($){
         // выбранные значения в массив
         const selectedSubjects = form.find('input:checkbox:checked').map(function() {
             return $(this).val();
-        }).get();
+        }).get().join();
         if (selectedSubjects.length < 3) {
             result.text('$textChooseSubject');
         } else {
@@ -37,7 +37,7 @@ jQuery(function($){
                    'option': 'com_egecalculator',
                    'view': 'directions',
                    'format': 'json',
-                   'subjects[]': selectedSubjects
+                   'subjects': selectedSubjects
                }, function(data, textStatus, jqXHR) {
                     if (data.success) {
                         let rows = '';

@@ -28,25 +28,27 @@ class EgecalculatorModelDirections extends JModelItem
     {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('title, fulltime_places, fulltime_score, distant_places, distant_score, subjects_ids')
+        $query->select('title, fulltime_places, fulltime_score, distant_places, distant_score, required_subjects_ids, optional_subjects_ids')
             ->from('#__egecalculator_directions');
         $db->setQuery($query);
         $directions = $db->loadObjectList();
+        $subjects = explode(',', $subjects[0]);
         // для каждого направления
         $filteredDirections =  array_filter($directions, function($direction) use ($subjects) {
-            $directionSubjects = explode(',', $direction->subjects_ids);
+            $requiredDirectionSubjects = explode(',', $direction->required_subjects_ids);
+            $optionalDirectionSubjects = explode(',', $direction->optional_subjects_ids);
             // берем совпадающие предметы в запросе и направлении
-            $intersectedSubjects = array_intersect($directionSubjects, $subjects);
+            $intersectedRequiredSubjects = array_intersect($requiredDirectionSubjects, $subjects);
+            $intersectedOptionalSubjects = array_intersect($optionalDirectionSubjects, $subjects);
             // если количество совпадающих элементов равно тому, что в направлении
-            if (count($intersectedSubjects) === count($directionSubjects)) {
-                return true;
-            }
-            return false;
+			$requiredSubjectsFilled = count($intersectedRequiredSubjects) === count($requiredDirectionSubjects);
+			$optionalSubjectsFilled = count($intersectedOptionalSubjects) > 0;
+            return $requiredSubjectsFilled && $optionalSubjectsFilled;
         });
 
         return array_values(
             array_map(function ($direction) {
-                unset($direction->subjects_ids);
+                unset($direction->required_subjects_ids, $direction->optional_subjects_ids);
                 return $direction;
             }, $filteredDirections)
         );
