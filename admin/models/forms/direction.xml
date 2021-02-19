@@ -15,6 +15,17 @@
                 default=""
         />
         <field
+                name="catid"
+                type="category"
+                extension="com_egecalculator"
+                class="inputbox"
+                default=""
+                label="COM_EGECALCULATOR_CATEGORY_OPTIONS"
+                required="true"
+        >
+            <option value="0">JOPTION_SELECT_CATEGORY</option>
+        </field>
+        <field
                 name="fulltime_places"
                 type="number"
                 label="COM_EGECALCULATOR_DIRECTION_FULLTIME_PLACES"

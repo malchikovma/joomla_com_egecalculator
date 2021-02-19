@@ -39,3 +39,8 @@ ALTER TABLE `#__egecalculator_directions` CHANGE
     `subjects_ids` `required_subjects_ids` VARCHAR(100) NULL;
 ALTER TABLE `#__egecalculator_directions`
     ADD `optional_subjects_ids` VARCHAR(100) NULL;
+
+-- 0.1.0
+
+ALTER TABLE `#__egecalculator_directions`
+    ADD `catid` INT(11) NOT NULL DEFAULT '0' AFTER `id`;

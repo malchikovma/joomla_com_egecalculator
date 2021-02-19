@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>malchikovma@vogu35.ru</authorEmail>
 	<authorUrl>vk.com/michaileight</authorUrl>
-	<version>0.0.2</version>
+	<version>0.1.0</version>
 	<description>COM_EGECALCULATOR_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<install> <!-- Runs on install -->
@@ -36,6 +36,7 @@
 		<files folder="admin">
 			<filename>controller.php</filename>
 			<filename>egecalculator.php</filename>
+			<filename>access.xml</filename>
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>models</folder>
@@ -56,6 +57,12 @@
 					view="subjects"
 			>
 				COM_EGECALCULATOR_SUBJECTS
+			</menu>
+			<menu
+					link="option=com_categories&amp;extension=com_egecalculator"
+					view="subjects"
+			>
+				COM_CATEGORIES
 			</menu>
 		</submenu>
 		<languages folder="admin/language">
