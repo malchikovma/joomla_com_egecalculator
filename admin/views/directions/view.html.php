@@ -52,6 +52,6 @@ class EgecalculatorViewDirections extends JViewLegacy
         JToolbarHelper::title($title);
         JToolbarHelper::addNew('direction.add');
         JToolbarHelper::editList('direction.edit');
-        JToolbarHelper::deleteList('direction.delete');
+        JToolbarHelper::deleteList('', 'directions.delete');
     }
 }

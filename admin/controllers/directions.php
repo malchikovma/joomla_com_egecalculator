@@ -8,7 +8,7 @@
  */
 class EgecalculatorControllerDirections extends JControllerAdmin
 {
-    public function getModel($name = 'Directon', $prefix = 'EgecalculatorModel', $config = array('ignore_request' => true))
+    public function getModel($name = 'Direction', $prefix = 'EgecalculatorModel', $config = array('ignore_request' => true))
     {
         return parent::getModel($name, $prefix, $config);
     }
