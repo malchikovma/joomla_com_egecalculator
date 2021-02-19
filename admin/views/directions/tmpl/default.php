@@ -23,23 +23,20 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
             <th width="1%">
                 <?php echo JHtml::_('grid.checkall', 'COM_EGECALCULATOR_DIRECTION_TITLE', 'title', $listDirn, $listOrder); ?>
             </th>
-            <th width="20%">
+            <th width="25%">
                 <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_TITLE', 'title', $listDirn, $listOrder); ?>
             </th>
             <th width="1%">
                 <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_PUBLISHED', 'published', $listDirn, $listOrder); ?>
             </th>
-            <th width="5%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_FULLTIME_PLACES', 'fulltime_places', $listDirn, $listOrder); ?>
+            <th width="8%">
+                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_BUDGET_PLACES', 'budget_places', $listDirn, $listOrder); ?>
+            </th>
+            <th width="7%">
+                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_PAID_PLACES', 'paid_places', $listDirn, $listOrder); ?>
             </th>
             <th width="5%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_FULLTIME_SCORE', 'fulltime_score', $listDirn, $listOrder); ?>
-            </th>
-            <th width="5%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_DISTANT_PLACES', 'distant_places', $listDirn, $listOrder); ?>
-            </th>
-            <th width="5%">
-                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_DISTANT_SCORE', 'distant_score', $listDirn, $listOrder); ?>
+                <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_PASSING_GRADE', 'passing_grade', $listDirn, $listOrder); ?>
             </th>
             <th width="5%" class="center">
                 <?php echo JHtml::_('searchtools.sort', 'COM_EGECALCULATOR_DIRECTION_ID', 'title', $listDirn, $listOrder); ?>
@@ -63,10 +60,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                     </a>
                 </td>
                 <td class="center"><?php echo JHtml::_('jgrid.published', $row->published, $i, 'directions.', true, 'cb'); ?></td>
-                <td class="center"><?php echo $row->fulltime_places ? $row->fulltime_places : '-'; ?></td>
-                <td class="center"><?php echo $row->fulltime_score ? $row->fulltime_score : '-'; ?></td>
-                <td class="center"><?php echo $row->distant_places ? $row->distant_places : '-'; ?></td>
-                <td class="center"><?php echo $row->distant_score ? $row->distant_score : '-'; ?></td>
+                <td class="center"><?php echo $row->budget_places ? $row->budget_places : '-'; ?></td>
+                <td class="center"><?php echo $row->paid_places ? $row->paid_places : '-'; ?></td>
+                <td class="center"><?php echo $row->passing_grade ? $row->passing_grade : '-'; ?></td>
                 <td class="center"><?php echo $row->id ?></td>
             </tr>
         <?php } ?>

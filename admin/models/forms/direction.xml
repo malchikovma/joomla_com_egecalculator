@@ -26,37 +26,25 @@
             <option value="0">JOPTION_SELECT_CATEGORY</option>
         </field>
         <field
-                name="fulltime_places"
+                name="budget_places"
                 type="number"
-                label="COM_EGECALCULATOR_DIRECTION_FULLTIME_PLACES"
-                description="COM_EGECALCULATOR_DIRECTION_FULLTIME_PLACES"
+                label="COM_EGECALCULATOR_BUDGET_PLACES"
                 size="40"
                 class="inputbox"
                 default=""
         />
         <field
-                name="fulltime_score"
+                name="paid_places"
                 type="number"
-                label="COM_EGECALCULATOR_DIRECTION_FULLTIME_SCORE"
-                description="COM_EGECALCULATOR_DIRECTION_FULLTIME_SCORE"
+                label="COM_EGECALCULATOR_PAID_PLACES"
                 size="40"
                 class="inputbox"
                 default=""
         />
         <field
-                name="distant_places"
+                name="passing_grade"
                 type="number"
-                label="COM_EGECALCULATOR_DIRECTION_DISTANT_PLACES"
-                description="COM_EGECALCULATOR_DIRECTION_DISTANT_PLACES"
-                size="40"
-                class="inputbox"
-                default=""
-        />
-        <field
-                name="distant_score"
-                type="number"
-                label="COM_EGECALCULATOR_DIRECTION_DISTANT_SCORE"
-                description="COM_EGECALCULATOR_DIRECTION_DISTANT_SCORE"
+                label="COM_EGECALCULATOR_PASSING_GRADE"
                 size="40"
                 class="inputbox"
                 default=""

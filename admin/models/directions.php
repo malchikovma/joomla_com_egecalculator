@@ -16,10 +16,9 @@ class EgecalculatorModelDirections extends JModelList
             $config['filter_fields'] = [
                 'id',
                 'title',
-                'fulltime_places',
-                'fulltime_score',
-                'distant_places',
-                'distant_score'
+                'budget_places',
+                'paid_places',
+                'passing_grade'
             ];
         }
         parent::__construct($config);
