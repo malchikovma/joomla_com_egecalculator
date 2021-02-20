@@ -18,5 +18,16 @@
         >
             <option value="">JOPTION_SELECT_PUBLISHED</option>
         </field>
+        <field
+                name="category"
+                type="category"
+                extension="com_egecalculator"
+                class="inputbox"
+                default=""
+                label="COM_EGECALCULATOR_CATEGORY_OPTIONS"
+                onchange="this.form.submit();"
+        >
+            <option value="0">JOPTION_SELECT_CATEGORY</option>
+        </field>
     </fields>
 </form>

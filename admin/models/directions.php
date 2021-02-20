@@ -9,52 +9,59 @@
 
 class EgecalculatorModelDirections extends JModelList
 {
-    public function __construct($config = array())
-    {
-        if (empty($config['filter_fields']))
-        {
-            $config['filter_fields'] = [
-                'id',
-                'title',
-                'budget_places',
-                'paid_places',
-                'passing_grade'
-            ];
-        }
-        parent::__construct($config);
-    }
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields']))
+		{
+			$config['filter_fields'] = [
+				'id',
+				'title',
+				'catid',
+			];
+		}
+		parent::__construct($config);
+	}
 
-    protected function getListQuery()
-    {
-        $db = $this->getDbo();
-        $query = $db->getQuery(true);
+	protected function getListQuery()
+	{
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
 
-        $query->select('*')
-            ->from($db->quoteName('#__egecalculator_directions'));
+		$query->select('d.*')
+			->from($db->quoteName('#__egecalculator_directions', 'd'));
 
-        $search = $this->getState('filter.search');
+		$query->select($db->quoteName('c.title', 'category_title'))
+			->join('LEFT', $db->quoteName('#__categories', 'c') . ' ON c.id = d.catid');
 
-        if (!empty($search))
-        {
-            $query->where("title LIKE %{$db->quote($search)}%");
-        }
-        $published = $this->getState('filter.published');
+		$search = $this->getState('filter.search');
 
-        if (is_numeric($published))
-        {
-            $query->where('published = ' . (int) $published);
-        }
-        elseif ($published === '')
-        {
-            $query->where('(published IN (0, 1))');
-        }
+		if (!empty($search))
+		{
+			$query->where("d.title LIKE %{$db->quote($search)}%");
+		}
+		$published = $this->getState('filter.published');
 
-        // Add the list ordering clause.
-        $orderCol	= $this->state->get('list.ordering', 'title');
-        $orderDirn 	= $this->state->get('list.direction', 'asc');
+		if (is_numeric($published))
+		{
+			$query->where('d.published = ' . (int) $published);
+		}
+		elseif ($published === '')
+		{
+			$query->where('(d.published IN (0, 1))');
+		}
 
-        $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
+		$category = $this->getState('filter.category');
+		if (is_numeric($category) && (int) $category !== 0)
+		{
+			$query->where('d.catid = ' . (int) $category);
+		}
 
-        return $query;
-    }
+		// Add the list ordering clause.
+		$orderCol	= $this->state->get('list.ordering', 'title');
+		$orderDirn 	= $this->state->get('list.direction', 'asc');
+
+		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
+
+		return $query;
+	}
 }
