@@ -47,7 +47,21 @@ class EgecalculatorModelDirections extends JModelItem
             $intersectedOptionalSubjects = array_intersect($optionalDirectionSubjects, $subjects);
             // если количество совпадающих элементов равно тому, что в направлении
 			$requiredSubjectsFilled = count($intersectedRequiredSubjects) === count($requiredDirectionSubjects);
-			$optionalSubjectsFilled = count(array_filter($optionalDirectionSubjects)) > 0 || ($intersectedOptionalSubjects) > 0;
+			$optionalSubjectsFilled = false;
+			// если выбран хотя бы один опциональный предмет
+			if (count($intersectedOptionalSubjects) > 0) {
+				$optionalSubjectsFilled = true;
+			} else {
+				// если опциональные предметы не заданы, возвращаем true и считаем только по обязательным
+				if (count(array_filter($optionalDirectionSubjects)) === 0) {
+					$optionalSubjectsFilled = true;
+				} else {
+					// если указано 3 и более обязательных предмета
+					if (count($intersectedRequiredSubjects) >= 3) {
+						$optionalSubjectsFilled = true;
+					}
+				}
+			}
             return $requiredSubjectsFilled && $optionalSubjectsFilled;
         });
 		$data = [];
