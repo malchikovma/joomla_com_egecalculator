@@ -34,7 +34,8 @@ class EgecalculatorModelDirections extends JModelItem
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('title, catid, budget_places, paid_places, passing_grade , required_subjects_ids, optional_subjects_ids')
-            ->from('#__egecalculator_directions');
+            ->from('#__egecalculator_directions')
+			->order('title');
         $db->setQuery($query);
         $directions = $db->loadObjectList();
         // для каждого направления
