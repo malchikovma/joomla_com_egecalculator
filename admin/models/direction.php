@@ -52,7 +52,7 @@ class EgecalculatorModelDirection extends JModelAdmin
     public function save($data)
     {
         $data['required_subjects_ids'] = implode(',', $data['required_subjects_ids']);
-        $data['optional_subjects_ids'] = implode(',', $data['optional_subjects_ids']);
+		$data['optional_subjects_ids'] = implode(',', $data['optional_subjects_ids']) ?: '';
         return parent::save($data);
     }
 
