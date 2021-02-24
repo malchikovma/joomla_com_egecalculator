@@ -41,7 +41,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
             <?php $link = 'index.php?option=com_egecalculator&task=subject.edit&id=' . $row->id ?>
             <tr>
                 <td><?php echo $this->pagination->getRowOffset($i); ?></td>
-                <td><? echo JHtml::_('grid.id', $i, $row->id); ?></td>
+                <td><?php echo JHtml::_('grid.id', $i, $row->id); ?></td>
                 <td>
                     <a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_EGECALCULATOR_EDIT_TITLE'); ?>">
                         <?php echo $row->title; ?>
