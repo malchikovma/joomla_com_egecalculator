@@ -6,12 +6,16 @@ $js = <<< JS
 /**
 * Преобразует массив значений в строку таблицы формата html
 * @param values array
+* @param isHeader boolean [false]
+* @param colspan integer [0]
 * @returns {string}
 */
-function getRow(values) {
+function getRow(values, isHeader = false, colspan = 0) {
+    const tag = isHeader ? 'th' : 'td';
+    const colspanAttr = (colspan > 0) ? ' colspan="' + colspan + '"' : '';  
     let html = '<tr>';
     for (let i = 0; i < values.length; i++) {
-        html += '<td>' + values[i] + '</td>';
+        html += '<' + tag + colspanAttr + '>' + (values[i] !== '0' ? values[i] : '-') + '</' + tag + '>';
     }
     html += '</td>';
     return html;
@@ -42,9 +46,23 @@ jQuery(function($){
                     if (data.success) {
                         let rows = '';
                         console.log(data.data);
-                        data.data.forEach(function(direction) {
-                            rows += getRow(Object.values(direction));
+                        // сформировать таблицу
+                        // формат:
+                        // category 1
+                        // direction 1 | col 1 | col 2 | ...
+                        const categories = data.data.categories;
+                        const directions = data.data.directions;
+                        categories.forEach(function(category) {
+                            const filteredDirections = directions.filter(direction => category.id === direction.catid);
+                            if (filteredDirections.length !== 0) {
+                            	rows += getRow([category.title], true, 4);
+								filteredDirections.forEach(function(direction) {
+								    delete direction.catid;
+                            		rows += getRow(Object.values(direction));
+								});
+                            }
                         });
+                        // задать содержимое таблицы
                         table.find('tbody').html(rows);
                         table.show();
                         result.text('')
@@ -90,15 +108,10 @@ $document->addStyleDeclaration($css)
         <table style="display: none;" class="egecalculator-table" id="egecalculator-table">
             <thead>
             <tr>
-                <th rowspan="2"><?php echo JText::_('COM_EGECALCULATOR_TABLE_DIRECTIONS_HEADER') ?></th>
-                <th colspan="2"><?php echo JText::_('COM_EGECALCULATOR_TABLE_FULLTIME_HEADER') ?></th>
-                <th colspan="2"><?php echo JText::_('COM_EGECALCULATOR_TABLE_DISTANT_HEADER') ?></th>
-            </tr>
-            <tr>
-                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_PLACES_HEADER') ?></th>
-                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_SCORE_HEADER') ?></th>
-                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_PLACES_HEADER') ?></th>
-                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_SCORE_HEADER') ?></th>
+                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_DIRECTIONS_HEADER') ?></th>
+                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_BUDGET_PLACES') ?></th>
+                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_PAID_PLACES') ?></th>
+                <th><?php echo JText::_('COM_EGECALCULATOR_TABLE_PASSING_SCORE') ?></th>
             </tr>
             </thead>
             <tbody>
