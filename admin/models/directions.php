@@ -37,7 +37,7 @@ class EgecalculatorModelDirections extends JModelList
 
 		if (!empty($search))
 		{
-			$query->where("d.title LIKE %{$db->quote($search)}%");
+			$query->where("d.title LIKE {$db->quote('%' . $search . '%')}");
 		}
 		$published = $this->getState('filter.published');
 
