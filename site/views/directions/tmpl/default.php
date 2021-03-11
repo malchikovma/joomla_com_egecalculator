@@ -100,7 +100,10 @@ $document->addStyleDeclaration($css)
                     echo $html;
                 }
             ?>
+			<br>
             <button class="btn" type="submit"><?php echo JText::_('COM_EGECALCULATOR_FORM_SUBMIT') ?></button>
+			<br>
+			<br>
         </form>
         <div id="egecalculator-directions">
             <?php echo JText::_('COM_EGECALCULATOR_CHOOSE_SUBJECTS') ?>
