@@ -31,6 +31,7 @@
 		<folder>controllers</folder>
 		<folder>views</folder>
 		<folder>models</folder>
+		<folder>language</folder>
 	</files>
 	<administration>
 		<files folder="admin">
@@ -43,6 +44,7 @@
 			<folder>views</folder>
 			<folder>controllers</folder>
 			<folder>helpers</folder>
+			<folder>language</folder>
 		</files>
 		<menu>COM_EGECALCULATOR_TITLE</menu>
 		<submenu>
