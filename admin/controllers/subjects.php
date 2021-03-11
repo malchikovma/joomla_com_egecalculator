@@ -8,7 +8,7 @@
  */
 class EgecalculatorControllerSubjects extends JControllerAdmin
 {
-    public function getModel($name = 'Subjects', $prefix = 'EgecalculatorModel', $config = array('ignore_request' => true))
+    public function getModel($name = 'Subject', $prefix = 'EgecalculatorModel', $config = array('ignore_request' => true))
     {
         return parent::getModel($name, $prefix, $config);
     }

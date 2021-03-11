@@ -52,6 +52,6 @@ class EgecalculatorViewSubjects extends JViewLegacy
         JToolbarHelper::title($title);
         JToolbarHelper::addNew('subject.add');
         JToolbarHelper::editList('subject.edit');
-        JToolbarHelper::deleteList('subject.delete');
+        JToolbarHelper::deleteList('', 'subjects.delete');
     }
 }
