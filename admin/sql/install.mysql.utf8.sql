@@ -50,3 +50,9 @@ ALTER TABLE `#__egecalculator_directions`
     ADD `budget_places` INT(11) DEFAULT NULL,
     ADD `paid_places` INT(11) DEFAULT NULL,
     ADD `passing_grade` INT(11) DEFAULT NULL;
+
+-- 1.1.0
+
+ALTER TABLE `#__egecalculator_subjects`
+    ADD `type` INT DEFAULT 0 NOT NULL;
+

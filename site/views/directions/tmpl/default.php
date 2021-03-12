@@ -91,15 +91,41 @@ $document->addStyleDeclaration($css)
         <h2 itemprop="headline">
             <?php echo JText::_('COM_EGECALCULATOR_TITLE') ?>
         </h2>
+		<?php
+		$eges = array_filter($this->subjects, function($subject) {
+			return $subject->type === "0";
+		});
+		$others = array_filter($this->subjects, function($subject) {
+			return $subject->type !== "0";
+		});
+		?>
         <form id="egecalculator-form">
-            <?php
-                foreach ($this->subjects as $subject) {
-                    $html = "<label class=\"egecalculator-label\" for=\"subject-{$subject->id}\">";
-                    $html .= "<input type=\"checkbox\" id=\"subject-{$subject->id}\" value=\"{$subject->id}\"/>&nbsp;";
-                    $html .= "{$subject->title}</label><br>";
-                    echo $html;
-                }
-            ?>
+			<?php if (count($eges) > 0) { ?>
+				<fieldset>
+					<legend>ЕГЭ</legend>
+					<?php
+					foreach ($eges as $subject) {
+						$html = "<label class=\"egecalculator-label\" for=\"subject-{$subject->id}\">";
+						$html .= "<input type=\"checkbox\" id=\"subject-{$subject->id}\" value=\"{$subject->id}\"/>&nbsp;";
+						$html .= "{$subject->title}</label><br>";
+						echo $html;
+					}
+					?>
+				</fieldset>
+			<?php } ?>
+			<?php if (count($others) > 0) { ?>
+				<fieldset>
+					<legend>Прочие испытания</legend>
+					<?php
+					foreach ($others as $subject) {
+						$html = "<label class=\"egecalculator-label\" for=\"subject-{$subject->id}\">";
+						$html .= "<input type=\"checkbox\" id=\"subject-{$subject->id}\" value=\"{$subject->id}\"/>&nbsp;";
+						$html .= "{$subject->title}</label><br>";
+						echo $html;
+					}
+					?>
+				</fieldset>
+			<?php } ?>
 			<br>
             <button class="btn" type="submit"><?php echo JText::_('COM_EGECALCULATOR_FORM_SUBMIT') ?></button>
 			<br>

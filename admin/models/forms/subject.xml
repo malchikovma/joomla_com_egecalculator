@@ -8,11 +8,23 @@
         <field
                 name="title"
                 type="text"
-                label="COM_EGECALCULATOR_DIRECTION_TITLE"
-                description="COM_EGECALCULATOR_DIRECTION_TITLE"
+                label="COM_EGECALCULATOR_SUBJECT_TITLE"
+                description="COM_EGECALCULATOR_SUBJECT_TITLE"
                 size="40"
                 class="inputbox"
                 default=""
         />
+        <field
+                name="type"
+                type="radio"
+                label="COM_EGECALCULATOR_SUBJECT_TYPE"
+                description="COM_EGECALCULATOR_SUBJECT_TYPE"
+                size="40"
+                class="btn-group"
+                default="0"
+        >
+            <option value="0">ЕГЭ</option>
+            <option value="1">Прочие испытания</option>
+        </field>
     </fieldset>
 </form>
