@@ -15,6 +15,15 @@
                 default=""
         />
         <field
+                name="link"
+                type="text"
+                label="COM_EGECALCULATOR_LINK"
+                description="COM_EGECALCULATOR_LINK"
+                size="40"
+                class="inputbox"
+                default=""
+        />
+        <field
                 name="catid"
                 type="category"
                 extension="com_egecalculator"

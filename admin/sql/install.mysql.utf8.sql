@@ -56,3 +56,8 @@ ALTER TABLE `#__egecalculator_directions`
 ALTER TABLE `#__egecalculator_subjects`
     ADD `type` INT DEFAULT 0 NOT NULL;
 
+-- 1.2.0
+
+ALTER TABLE `#__egecalculator_directions`
+    ADD `link` VARCHAR(2048) DEFAULT '' NOT NULL;
+

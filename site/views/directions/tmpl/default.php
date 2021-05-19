@@ -55,10 +55,16 @@ jQuery(function($){
                         categories.forEach(function(category) {
                             const filteredDirections = directions.filter(direction => category.id === direction.catid);
                             if (filteredDirections.length !== 0) {
-                            	rows += getRow([category.title], true, 4);
+                                rows += '<tr><th colspan="4">' + category.title + '</th></tr>';
 								filteredDirections.forEach(function(direction) {
-								    delete direction.catid;
-                            		rows += getRow(Object.values(direction));
+								    rows += '<tr>';
+								    rows += direction.link.length ?
+								    	'<td><a href="' + direction.link + '" target="_blank">' + direction.title + '</a></td>' :
+								    	'<td>' + direction.title + '</td>';
+								    rows += '<td>' + direction.budget_places + '</td>';
+								    rows += '<td>' + direction.paid_places + '</td>';
+								    rows += '<td>' + direction.passing_grade + '</td>';
+								    rows += '</tr>';
 								});
                             }
                         });
